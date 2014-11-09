@@ -1,0 +1,20 @@
+<div class="container">
+  <h2>Login</h2>
+  <form role="form" ng-submit="login()">
+    <div class="input-group">
+     <p><input type="text" ng-model="loginUsername" placeholder="username"></p>
+      <p><input type="text" ng-model="loginPassword" placeholder="password"></p>
+      <p><input type="submit" class="btn btn primary" value="login"></p>
+    </div>
+  </form>
+  <h2>Register</h2>
+  <form role="form" ng-submit="register()">
+    <div class="input-group">
+      <p><input type="text" ng-model="registerUsername" placeholder="username"></p>
+      <p><input type="text" ng-model="registerPassword1" placeholder="password"></p>
+      <p><input type="text" ng-model="registerPassword2" placeholder="confirm password"></p>
+      <p><input type="submit" class="btn btn primary" value="Register"></p>
+      <p id="passwordError">Sorry the passwords you entered did not match. Please try again.</p>
+    </div>
+  </form>
+</div>

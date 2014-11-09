@@ -1,0 +1,20 @@
+<div ng-controller="UsersCtrl">
+
+<div class="container">
+  <h2>Users</h2>
+
+  <p>Filter by Firstname: <input type="text" ng-model="nameFilter"></p>
+    <table class = "table table-hover">
+      <tr ng-repeat="user in users | filter:nameFilter" ng-click="user.$selected = !user.$selected; openSelectedUser(user)"
+          ng-class="{'active': user.$selected}">
+        <td>{{ user.firstname }}</td>
+        <td>{{ user.surname }}</td>
+        <td>{{ user.grad_year}}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.jobs }}</td>
+        <td>{{ user.email }}</td>
+      </tr>
+    </table>
+</div>
+
+</div>
