@@ -1,6 +1,8 @@
-<div class="container">
-  <h2>Awesome Things</h2>
-  <p class="form-group" ng-repeat="awesomeThing in awesomeThings">
-  <input type="text" ng-model="awesomeThing" class="form-control">
-  </p>
+<div ng-controller="MainCtrl">
+  <div class="container">
+    <h2>Awesome Things</h2>
+    <p class="form-group" ng-repeat="awesomeThing in awesomeThings">
+    <input type="text" ng-model="awesomeThing" class="form-control">
+    </p>
+  </div>
 </div>

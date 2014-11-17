@@ -6,22 +6,21 @@
 'use strict';
 
 angular.module('csaClientAngularjsApp')
-  .controller('LoginCtrl', ['$scope', function ($scope) {
+  .controller('LoginCtrl', ['$scope', '$http', '$rootScope', function ($scope, $http, $rootScope) {
 
     $scope.loginUsername = '';
     $scope.loginPassword = '';
 
-/*    $http.get('http://localhost:3000/session/new').
-      success(function(data, status, headers, config) {
-      }).
-      error(function(data, status, headers, config) {
-      }); */
     $scope.login = function() {
       $http.post('http://localhost:3000/session', {login:$scope.loginUsername, password:$scope.loginPassword}).
-        success(function(data, status, headers, config) {
+        success(function(data) {
+          console.log('Session created');
+          $rootScope.loggedIn = true;
+          $rootScope.currentUser = data.firstName;
+
 
         }).
-        error(function(data, status, headers, config) {
+        error(function() {
 
         });
     };
@@ -29,7 +28,7 @@ angular.module('csaClientAngularjsApp')
       if($scope.password1.val() === $scope.password2.val()) {
 
       } else {
-          $('#passwordError').hide();
+         // $('#passwordError').hide();
       }
     };
   }]);
