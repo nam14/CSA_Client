@@ -30,8 +30,8 @@
 
           <li><a ng-href="#">Home</a></li>
           <li><a ng-href="#/jobs">Jobs</a></li>
-          <li><a ng-href="#/users">Users</a></li>
-          <li><a ng-href="#/broadcasts">Broadcasts</a></li>
+          <li ng-show="loggedIn"><a ng-href="#/users">Users</a></li>
+          <li ng-show="loggedIn"><a ng-href="#/broadcasts">Broadcasts</a></li>
           <li><a ng-href="#/login">Login/Register</a></li>
         </ul>
 

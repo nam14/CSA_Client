@@ -51,4 +51,15 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+  }).run(function ($rootScope) {
+    $rootScope.loggedIn = false;
+    $rootScope.loggedInToBeTruthy = function (){
+     // $rootScope.$apply(function() {
+        $rootScope.loggedIn = true;
+     // });
+    };
+
+    $rootScope.loggedInToBeFalsey = function (){
+      $rootScope.loggedIn = false;
+    };
   });
