@@ -78,3 +78,7 @@ body {
   }
 }
 
+.handPointer {
+  cursor : hand;
+}
+

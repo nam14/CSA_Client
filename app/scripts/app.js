@@ -53,13 +53,21 @@ angular
       });
   }).run(function ($rootScope) {
     $rootScope.loggedIn = false;
+    $rootScope.currentUser = 'Guest';
+
     $rootScope.loggedInToBeTruthy = function (){
-     // $rootScope.$apply(function() {
         $rootScope.loggedIn = true;
-     // });
     };
 
     $rootScope.loggedInToBeFalsey = function (){
       $rootScope.loggedIn = false;
+    };
+
+    $rootScope.resetCurrentUser = function (){
+      $rootScope.currentUser = 'Guest';
+    };
+
+    $rootScope.setCurrentUser = function (user) {
+      $rootScope.currentUser = user;
     };
   });
