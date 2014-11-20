@@ -1,5 +1,7 @@
 'use strict';
 
+/*global $:false */
+
 /**
  * @ngdoc overview
  * @name csaClientAngularjsApp
@@ -19,6 +21,7 @@ angular
     'ngTable'
   ])
   .config(function ($routeProvider) {
+
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -33,7 +36,7 @@ angular
         controller: 'JobsCtrl'
       })
       .when('/broadcasts', {
-        templateUrl: 'views/broadcasts.html',
+        templateUrl: '../views/broadcasts/broadcasts.html',
         controller: 'BroadcastsCtrl'
       })
       .when('/users', {
@@ -47,6 +50,9 @@ angular
       .when('/show/ :userId', {
         templateUrl: '../views/users/show.html',
         controller: 'UsersCtrl'
+      })
+      .when('/broadcasts', {
+        templateUrl: '../views/broadcasts/broadcasts.html'
       })
       .otherwise({
         redirectTo: '/'
@@ -70,4 +76,7 @@ angular
     $rootScope.setCurrentUser = function (user) {
       $rootScope.currentUser = user;
     };
-  });
+  }).config(['$httpProvider', function($httpProvider) {
+
+    $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
+  }]);

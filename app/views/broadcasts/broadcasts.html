@@ -1,0 +1,12 @@
+<div ng-controller="BroadcastCtrl">
+  <div class="container">
+    <h2>Broadcasts</h2>
+
+    <table class = "table table-hover">
+      <tr ng-repeat="broadcast in broadcasts" ng-click="broadcast.$selected = !broadcast.$selected;"
+          ng-class="{'active': broadcast.$selected}">
+
+      </tr>
+    </table>
+  </div>
+</div>
