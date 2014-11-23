@@ -1,6 +1,6 @@
 'use strict';
 
-/*global $:false */
+/*jshint sub:true*/
 
 /**
  * @ngdoc overview
@@ -13,7 +13,7 @@
 angular
   .module('csaClientAngularjsApp', [
    // 'ngAnimate',
-   // 'ngCookies',
+    'ngCookies',
   //  'ngResource',
     'ngRoute',
   //  'ngSanitize',
@@ -23,7 +23,7 @@ angular
   .config(function ($routeProvider) {
 
     $routeProvider
-      .when('/', {
+      .when('/#', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
@@ -55,11 +55,12 @@ angular
         templateUrl: '../views/broadcasts/broadcasts.html'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/login'
       });
   }).run(function ($rootScope) {
     $rootScope.loggedIn = false;
     $rootScope.currentUser = 'Guest';
+
 
     $rootScope.loggedInToBeTruthy = function (){
         $rootScope.loggedIn = true;
@@ -76,7 +77,7 @@ angular
     $rootScope.setCurrentUser = function (user) {
       $rootScope.currentUser = user;
     };
-  }).config(['$httpProvider', function($httpProvider) {
 
-    $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
-  }]);
+  //  $http.defaults.headers.common['Authorization'] = 'Basic ' + 'admin:password';
+
+  });

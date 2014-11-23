@@ -5,51 +5,53 @@
 
 'use strict';
 
+/*jshint sub:true*/
+
 angular.module('csaClientAngularjsApp')
-  .controller('LoginCtrl', ['$scope', '$http', '$rootScope', '$location', function ($scope, $http, $rootScope,
-                                                                                    $location) {
+  .controller('LoginCtrl', ['$scope', '$http', '$rootScope', '$location', 'Base64', 'AuthenticationService',
+    function ($scope, $http, $rootScope, $location, Base64) {
 
-    $scope.loginUsername = '';
-    $scope.loginPassword = '';
+      //login
+      $scope.login = function() {
+        var loginData = Base64.encode($scope.loginUsername + ':' + $scope.loginPassword);
+        $http.defaults.headers.common['Authorization'] = 'Basic ' + loginData;
+       // AuthenticationService.clearCredentials();
+        $http.post('http://localhost:3000/session', {login:$scope.loginUsername, password:$scope.loginPassword}).
+          success(function(data) {
+            loggedIn(data);
+          }).
+          error(function() {
 
-    //login
-    $scope.login = function() {
-      $http.post('http://localhost:3000/session', {login:$scope.loginUsername, password:$scope.loginPassword}).
-        success(function(data) {
-          console.log('Session created');
-          console.log($scope.loggedIn);
-          $scope.loggedInToBeTruthy();
-          console.log($scope.loggedIn);
-          $rootScope.setCurrentUser(data.login);
-          $location.path('/#');
-        //  $rootScope.currentUser = data.firstName;
+          });
+      };
 
-        }).
-        error(function() {
+      //register a new user
+      $scope.register = function() {
+        if($scope.password1.val() === $scope.password2.val()) {
+        } else {
+        }
+      };
 
-        });
-    };
+      //logout - rootScope as needs to be accessible in index.html
+      $rootScope.logout = function() {
+        $http.delete('http://localhost:3000/session')
+          .success(function() {
+            console.log('session deleted');
+            $rootScope.resetCurrentUser();
+            $rootScope.loggedInToBeFalsey();
+            $location.path('/#');
 
-    //register a new user
-    $scope.register = function() {
-      if($scope.password1.val() === $scope.password2.val()) {
-      } else {
+
+          }).error(function() {
+
+          });
+
+      };
+
+      function loggedIn(data) {
+        $scope.loggedInToBeTruthy();
+        $scope.setCurrentUser(data.login);
+        //AuthenticationService.setCredentials($scope.loginUsername, $scope.loginPassword);
+        $location.path('/#');
       }
-    };
-
-    //logout - rootScope as needs to be accessible in index.html
-    $rootScope.logout = function() {
-      $http.delete('http://localhost:3000/session')
-        .success(function() {
-          console.log('session deleted');
-          $rootScope.resetCurrentUser();
-          $rootScope.loggedInToBeFalsey();
-          $location.path('/#');
-
-
-        }).error(function() {
-
-        });
-
-    };
-  }]);
+    }]);

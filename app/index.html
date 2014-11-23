@@ -39,7 +39,8 @@
         <h3 class="text-muted">CS-Alumni</h3>
       </div>
 
-      <div ng-view=""></div>
+
+      <ng-view></ng-view>
 
       <div class="footer">
         <p>Natalia Miller</p>
@@ -76,16 +77,20 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/ng-table/ng-table.js"></script>
+    <script src="bower_components/angular-base64/angular-base64.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
+        <script src="scripts/Base64.js"></script>
+        <script src="scripts/Authentication.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/userControllers/users.js"></script>
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/broadcasts.js"></script>
+
 
         <!-- endbuild -->
 
