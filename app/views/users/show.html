@@ -3,6 +3,14 @@
   <div class="container">
     <h2>User Profile</h2>
 
+    <p>First Name {{selectedUser.firstname}}</p>
+    <p>Surname {{selectedUser.surname}}</p>
+    <p>Phone Number {{selectedUser.phone}}</p>
+    <p>Email {{selectedUser.email}}</p>
+    <p>Grad Year {{selectedUser.grad_year}}</p>
+    <p>Jobs {{selectedUser.jobs}}</p>
   </div>
+
+  <button type="button" ng-click="editUser()">Edit</button>
 
 </div>

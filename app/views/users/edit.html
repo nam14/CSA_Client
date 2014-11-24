@@ -1,0 +1,53 @@
+<div ng-controller="UsersCtrl">
+
+  <div class="container">
+    <h2>Edit Profile</h2>
+
+    <form role="form" ng-submit="updateUser()">
+
+      <div class="form-group">
+        <label for="editFirstname">First Name</label>
+        <input type="text" ng-model="editFirstname" name="firstname" id="editFirstname"
+               class="form-control" ng-value="selectedUser.firstname" required>
+        <span ng-show="form.firstname.$dirty && form.firstname.$error.required"
+              class="help-block">First Name is required</span>
+      </div>
+      <div class="form-group">
+        <label for="editSurname">Surname</label>
+        <input type="text" ng-model="editSurname" name="surname" id="editSurname"
+               class="form-control" ng-value="selectedUser.surname" required>
+        <span ng-show="form.surname.$dirty && form.surname.$error.required"
+              class="help-block">Surname is required</span>
+      </div>
+      <div class="form-group">
+        <label for="editPhone">Phone</label>
+        <input type="text" ng-model="editPhone" name="phone" id="editPhone"
+               class="form-control" ng-value="selectedUser.phone" required>
+        <span ng-show="form.phone.$dirty && form.phone.$error.required"
+              class="help-block">Phone is required</span>
+      </div>
+      <div class="form-group">
+        <label for="editEmail">Email</label>
+        <input type="text" ng-model="editEmail" name="email" id="editEmail"
+               class="form-control" ng-value="selectedUser.email" required>
+        <span ng-show="form.email.$dirty && form.email.$error.required"
+              class="help-block">Email is required</span>
+      </div>
+      <div class="form-group">
+        <label for="editGradYear">Surname</label>
+        <input type="text" ng-model="editGradYear" name="grad_year" id="editGradYear"
+               class="form-control" ng-value="selectedUser.grad_year" required>
+        <span ng-show="form.grad_year.$dirty && form.grad_year.$error.required"
+              class="help-block">Graduation Year is required</span>
+      </div>
+      <div class="form-group">
+        <label for="editJobs">Email</label>
+        <input type="checkbox" ng-model="editJobs" name="jobs" id="editJobs"
+               class="form-control" ng-value="selectedUser.jobs" required>
+      </div>
+
+    </form>
+  </div>
+
+</div>
+

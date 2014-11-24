@@ -47,15 +47,20 @@ angular
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       })
-      .when('/show/ :userId', {
+      .when('/users/show/:userId', {
         templateUrl: '../views/users/show.html',
         controller: 'UsersCtrl'
       })
-      .when('/broadcasts', {
-        templateUrl: '../views/broadcasts/broadcasts.html'
+      .when('/users/edit', {
+        templateUrl: '../views/users/edit.html',
+        controller: 'UsersCtrl'
+      })
+      .when('/users/new', {
+        templateUrl: '../views/users/new.html',
+        controller: 'UsersCtrl'
       })
       .otherwise({
-        redirectTo: '/login'
+        redirectTo: '/'
       });
   }).run(function ($rootScope) {
     $rootScope.loggedIn = false;

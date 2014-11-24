@@ -1,8 +1,8 @@
-<div ng-controller="UsersCtrl">
+<div ng-controller="UsersCtrl" ng-init="initUsers()">
 
 <div class="container">
   <h2>Users</h2>
-
+  <button type="button" ng-click="createUser()">Create User</button>
   <p>Filter by Firstname: <input type="text" ng-model="nameFilter"></p>
     <table class = "table table-hover">
       <th>Firstname</th>
