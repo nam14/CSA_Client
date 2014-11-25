@@ -5,23 +5,23 @@
 
 
 angular.module('csaClientAngularjsApp')
-  .controller('UsersCtrl', ['$scope', '$http', 'ngTableParams', '$location', '$routeParams',
-    function ($scope, $http, ngTableParams, $location, $routeParams) {
+  .controller('UsersCtrl', ['$scope', '$http', 'ngTableParams', '$location', '$routeParams', 'UserService',
+    function ($scope, $http, ngTableParams, $location, $routeParams, UserService) {
       var previousSelection;
-      var selectedUser;
 
       $scope.initUsers = function() {
         $scope.loadUsers();
       };
 
       $scope.loadUsers = function() {
+
         $http.get('http://localhost:3000/users.json').
-          success(function(data) {
-            $scope.users=data;
-          }).
-          error(function(data) {
-          });
-      };
+           success(function(data) {
+           $scope.users=data;
+           }).
+           error(function(data) {
+           });
+        };
 
       $scope.openSelectedUser = function(user){
         if(previousSelection) {
@@ -29,19 +29,17 @@ angular.module('csaClientAngularjsApp')
         }
         previousSelection = user;
 
-        $http.get(user.url).
+        UserService.setSelectedUser(user);
+        $routeParams.userId = UserService.getSelectedUser().id;
+        $location.path('users/'+ $routeParams.userId);
+
+        /*$http.get(user.url).
           success(function(data) {
-            $scope.selectedUser = data;
             $routeParams.userId = data.id;
-            $location.path('users/show/' + $routeParams.userId);
+            $location.path('users/'+$routeParams.userId);
           }).
           error(function(data) {
-          });
-        console.log(user);
-      };
-
-      $scope.editUser = function() {
-        $location.path('users/edit');
+          });*/
       };
 
       $scope.createUser = function() {

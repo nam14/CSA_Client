@@ -47,11 +47,11 @@ angular
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       })
-      .when('/users/show/:userId', {
+      .when('/users/:userId', {
         templateUrl: '../views/users/show.html',
-        controller: 'UsersCtrl'
+        controller: 'ShowUserCtrl'
       })
-      .when('/users/edit', {
+      .when('/users/:userId/edit', {
         templateUrl: '../views/users/edit.html',
         controller: 'UsersCtrl'
       })
@@ -64,7 +64,7 @@ angular
       });
   }).run(function ($rootScope) {
     $rootScope.loggedIn = false;
-    $rootScope.currentUser = 'Guest';
+    $rootScope.currentUsername = 'Guest';
 
 
     $rootScope.loggedInToBeTruthy = function (){
@@ -75,12 +75,12 @@ angular
       $rootScope.loggedIn = false;
     };
 
-    $rootScope.resetCurrentUser = function (){
-      $rootScope.currentUser = 'Guest';
+    $rootScope.resetCurrentUsername = function (){
+      $rootScope.currentUsername = 'Guest';
     };
 
-    $rootScope.setCurrentUser = function (user) {
-      $rootScope.currentUser = user;
+    $rootScope.setCurrentUsername = function (user) {
+      $rootScope.currentUsername = user;
     };
 
   //  $http.defaults.headers.common['Authorization'] = 'Basic ' + 'admin:password';

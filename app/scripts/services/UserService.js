@@ -1,7 +1,12 @@
 /**
- * Created by nataliamiller on 24/11/2014.
+ * Created by nataliamiller on 25/11/2014.
  */
 
+
+/**
+ * Created by nataliamiller on 24/11/2014.
+ */
+'use strict';
 
 /**
  * Created by nataliamiller on 22/11/2014.
@@ -9,27 +14,24 @@
 
 
 angular.module('csaClientAngularjsApp')
-  .factory('UserService', ['$http', function ($http) {
+  .factory('UserService', ['$rootScope', function ($rootScope) {
 
-    return {
-      getAllUsers: function () {
-        var users;
-        $http.get('http://localhost:3000/users').
-          success(function (data) {
-            users = data;
-          });
+    var service={};
 
-        return users;
-      },
-
-      getUser: function () {
-
-      },
-
-      post: function (input) {
-
-        return null;
-      }
+    service.setSelectedUser = function (user) {
+        $rootScope.selectedUser = user;
     };
+
+    service.clearSelectedUser = function () {
+        $rootScope.selectedUser = null;
+    };
+
+    service.getSelectedUser = function () {
+        return $rootScope.selectedUser;
+    };
+    service.selectedUser = $rootScope.selectedUser;
+
+
+    return service;
 
   }]);

@@ -7,11 +7,11 @@
     <table class = "table table-hover">
       <th>Firstname</th>
       <th>Surname</th>
-      <th>Graduation Year</th>
+      <th>Grad Year</th>
       <th>Phone Number</th>
       <th>Jobs</th>
       <th>Email Address</th>
-      <tr ng-repeat="user in users | filter:nameFilter" ng-click="user.$selected = !user.$selected; openSelectedUser(user)"
+      <tr ng-repeat="user in users| filter:nameFilter" ng-click="user.$selected = !user.$selected; openSelectedUser(user)"
           ng-class="{'active': user.$selected}">
         <td>{{ user.firstname }}</td>
         <td>{{ user.surname }}</td>

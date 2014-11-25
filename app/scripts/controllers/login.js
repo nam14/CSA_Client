@@ -37,7 +37,7 @@ angular.module('csaClientAngularjsApp')
         $http.delete('http://localhost:3000/session')
           .success(function() {
             console.log('session deleted');
-            $rootScope.resetCurrentUser();
+            $rootScope.resetCurrentUsername();
             $rootScope.loggedInToBeFalsey();
             $location.path('/#');
 
@@ -50,7 +50,7 @@ angular.module('csaClientAngularjsApp')
 
       function loggedIn(data) {
         $scope.loggedInToBeTruthy();
-        $scope.setCurrentUser(data.login);
+        $scope.setCurrentUsername(data.login);
         //AuthenticationService.setCredentials($scope.loginUsername, $scope.loginPassword);
         $location.path('/#');
       }
