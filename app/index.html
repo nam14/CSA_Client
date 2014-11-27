@@ -29,9 +29,7 @@
         <ul class="nav nav-pills pull-right" id="menu">
 
           <li><a ng-href="#">Home</a></li>
-          <li><a ng-href="#/jobs">Jobs</a></li>
           <li ng-show="loggedIn"><a ng-href="#/users">Users</a></li>
-          <li ng-show="loggedIn"><a ng-href="#/broadcasts">Broadcasts</a></li>
           <li ng-show="!loggedIn"><a ng-href="#/login">Login/Register</a></li>
           <li ng-show="loggedIn"><a ng-click="logout()">Logout</a> </li>
         </ul>
@@ -76,7 +74,6 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/ng-table/ng-table.js"></script>
-    <script src="bower_components/angular-base64/angular-base64.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -88,8 +85,8 @@
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/userControllers/users.js"></script>
         <script src="scripts/controllers/userControllers/showUser.js"></script>
+        <script src="scripts/controllers/userControllers/editUser.js"></script>
         <script src="scripts/controllers/login.js"></script>
-        <script src="scripts/controllers/broadcasts.js"></script>
 
 
         <!-- endbuild -->

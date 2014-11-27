@@ -5,8 +5,8 @@
 
 
 angular.module('csaClientAngularjsApp')
-  .controller('UsersCtrl', ['$scope', '$http', 'ngTableParams', '$location', '$routeParams', 'UserService',
-    function ($scope, $http, ngTableParams, $location, $routeParams, UserService) {
+  .controller('UsersCtrl', ['$scope', '$http', '$location', '$routeParams', 'UserService',
+    function ($scope, $http, $location, $routeParams, UserService) {
       var previousSelection;
 
       $scope.initUsers = function() {
@@ -17,7 +17,7 @@ angular.module('csaClientAngularjsApp')
 
         $http.get('http://localhost:3000/users.json').
            success(function(data) {
-           $scope.users=data;
+            $scope.users=data;
            }).
            error(function(data) {
            });
@@ -31,15 +31,9 @@ angular.module('csaClientAngularjsApp')
 
         UserService.setSelectedUser(user);
         $routeParams.userId = UserService.getSelectedUser().id;
+        console.log(UserService.getSelectedUser());
         $location.path('users/'+ $routeParams.userId);
 
-        /*$http.get(user.url).
-          success(function(data) {
-            $routeParams.userId = data.id;
-            $location.path('users/'+$routeParams.userId);
-          }).
-          error(function(data) {
-          });*/
       };
 
       $scope.createUser = function() {

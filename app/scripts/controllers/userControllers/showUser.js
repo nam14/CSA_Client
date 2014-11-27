@@ -26,4 +26,8 @@ angular.module('csaClientAngularjsApp')
       $scope.editUser = function() {
         $location.path('/users/'+$routeParams.userId+'/edit');
       };
+
+      $scope.backToUsers = function() {
+        $location.path('/users');
+      };
     }]);

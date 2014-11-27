@@ -13,12 +13,11 @@
 angular
   .module('csaClientAngularjsApp', [
    // 'ngAnimate',
-    'ngCookies',
+   // 'ngCookies',
   //  'ngResource',
-    'ngRoute',
+    'ngRoute'
   //  'ngSanitize',
   //  'ngTouch',
-    'ngTable'
   ])
   .config(function ($routeProvider) {
 
@@ -26,18 +25,6 @@ angular
       .when('/#', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .when('/jobs', {
-        templateUrl: 'views/jobs.html',
-        controller: 'JobsCtrl'
-      })
-      .when('/broadcasts', {
-        templateUrl: '../views/broadcasts/broadcasts.html',
-        controller: 'BroadcastsCtrl'
       })
       .when('/users', {
         templateUrl: '../views/users/users.html',
@@ -53,14 +40,14 @@ angular
       })
       .when('/users/:userId/edit', {
         templateUrl: '../views/users/edit.html',
-        controller: 'UsersCtrl'
+        controller: 'EditUserCtrl'
       })
       .when('/users/new', {
         templateUrl: '../views/users/new.html',
-        controller: 'UsersCtrl'
+        controller: 'NewUserCtrl'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/#'
       });
   }).run(function ($rootScope) {
     $rootScope.loggedIn = false;
@@ -79,8 +66,8 @@ angular
       $rootScope.currentUsername = 'Guest';
     };
 
-    $rootScope.setCurrentUsername = function (user) {
-      $rootScope.currentUsername = user;
+    $rootScope.setCurrentUsername = function (username) {
+      $rootScope.currentUsername = username;
     };
 
   //  $http.defaults.headers.common['Authorization'] = 'Basic ' + 'admin:password';

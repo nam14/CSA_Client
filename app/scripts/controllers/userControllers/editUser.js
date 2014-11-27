@@ -5,14 +5,21 @@
 
 
 angular.module('csaClientAngularjsApp')
-  .controller('EditUserCtrl', ['$scope', '$http', '$location', '$routeParams', 'UserService',
-    function ($scope, UserService, $http) {
+  .controller('EditUserCtrl', ['$scope', 'UserService', '$location', '$http',
+    function ($scope, UserService, $location, $http) {
 
       $scope.init = function () {
         $scope.user = UserService.getSelectedUser();
       };
 
-      $scope.updateUser = function($http) {
+      $scope.updateUser = function() {
+        $http.put('http://localhost:3000/users/' + $scope.user.id + '.json', {user:$scope.user}).
+          success(function(){
+            console.log('updated');
+            $location.path('/users/'+ $scope.user.id);
+          }).error(function(){
+
+          });
 
       };
 

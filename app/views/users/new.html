@@ -1,49 +1,52 @@
-<div ng-controller="UsersCtrl">
+<div ng-controller="NewUserCtrl" ng-init="init()">
 
   <div class="container">
     <h2>New User</h2>
 
-    <form role="form" ng-submit="submitNewUser()">
+    <form role="form" ng-submit="createNewUser()">
 
       <div class="form-group">
         <label for="newFirstname">First Name</label>
-        <input type="text" ng-model="newFirstname" name="firstname" id="newFirstname"
+        <input type="text" ng-model="user.firstname" name="firstname" id="newFirstname"
                class="form-control" required>
         <span ng-show="form.firstname.$dirty && form.firstname.$error.required"
               class="help-block">First Name is required</span>
       </div>
       <div class="form-group">
         <label for="newSurname">Surname</label>
-        <input type="text" ng-model="newSurname" name="surname" id="newSurname"
+        <input type="text" ng-model="user.surname" name="surname" id="newSurname"
                class="form-control" required>
         <span ng-show="form.surname.$dirty && form.surname.$error.required"
               class="help-block">Surname is required</span>
       </div>
       <div class="form-group">
         <label for="newPhone">Phone</label>
-        <input type="text" ng-model="newPhone" name="phone" id="newPhone"
+        <input type="text" ng-model="user.phone" name="phone" id="newPhone"
                class="form-control" required>
         <span ng-show="form.phone.$dirty && form.phone.$error.required"
               class="help-block">Phone is required</span>
       </div>
       <div class="form-group">
         <label for="editEmail">Email</label>
-        <input type="text" ng-model="editEmail" name="email" id="editEmail"
+        <input type="text" ng-model="user.email" name="email" id="editEmail"
                class="form-control" required>
         <span ng-show="form.email.$dirty && form.email.$error.required"
               class="help-block">Email is required</span>
       </div>
       <div class="form-group">
         <label for="newGradYear">Surname</label>
-        <input type="text" ng-model="newGradYear" name="grad_year" id="newGradYear"
+        <input type="text" ng-model="user.grad_year" name="grad_year" id="newGradYear"
                class="form-control"  required>
         <span ng-show="form.grad_year.$dirty && form.grad_year.$error.required"
               class="help-block">Graduation Year is required</span>
       </div>
       <div class="form-group">
         <label for="newJobs">Email</label>
-        <input type="checkbox" ng-model="newJobs" name="jobs" id="newJobs"
-               class="form-control" required>
+        <input type="checkbox" ng-model="user.jobs" name="jobs" id="newJobs"
+               class="form-control">
+      </div>
+      <div class="form-actions">
+        <button type="submit" ng-disabled="form.$invalid" class="btn btn danger" >Create User</button>
       </div>
 
     </form>

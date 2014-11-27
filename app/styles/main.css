@@ -35,6 +35,7 @@ body {
 @media (min-width: 768px) {
   .container {
     max-width: 730px;
+    margin-bottom: 15px;
   }
 }
 .container-narrow > hr {
@@ -67,6 +68,7 @@ body {
   .footer {
     padding-left: 0;
     padding-right: 0;
+
   }
   /* Space out the masthead */
   .header {
