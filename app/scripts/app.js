@@ -13,7 +13,7 @@
 angular
   .module('csaClientAngularjsApp', [
    // 'ngAnimate',
-   // 'ngCookies',
+    'ngCookies',
   //  'ngResource',
     'ngRoute'
   //  'ngSanitize',
@@ -34,6 +34,10 @@ angular
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       })
+      .when('/users/new', {
+        templateUrl: '../views/users/new.html',
+        controller: 'NewUserCtrl'
+      })
       .when('/users/:userId', {
         templateUrl: '../views/users/show.html',
         controller: 'ShowUserCtrl'
@@ -41,10 +45,6 @@ angular
       .when('/users/:userId/edit', {
         templateUrl: '../views/users/edit.html',
         controller: 'EditUserCtrl'
-      })
-      .when('/users/new', {
-        templateUrl: '../views/users/new.html',
-        controller: 'NewUserCtrl'
       })
       .otherwise({
         redirectTo: '/#'

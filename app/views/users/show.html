@@ -2,19 +2,20 @@
 
   <div class="container">
 
-    <button type="button" class="button button-default" ng-click="backToUsers()">Back to Users</button>
-
     <h2>User Profile</h2>
 
-    <p>First Name: {{user.firstname}}</p>
-    <p>Surname: {{user.surname}}</p>
-    <p>Phone Number: {{user.phone}}</p>
-    <p>Email: {{user.email}}</p>
-    <p>Grad Year: {{user.grad_year}}</p>
-    <p>Jobs: {{user.jobs}}</p>
+    <h3>{{user.firstname}} {{user.surname}}</h3>
 
+    <h5>Phone Number:</h5>
+    <p>{{user.phone}}</p>
+    <h5>Email:</h5>
+    <p>{{user.email}}</p>
+    <h5>Grad Year:</h5>
+    <p>{{user.grad_year}}</p>
+    <h5>Jobs:</h5>
+    <p>{{user.jobs}}</p>
 
-  <button type="button" class="button button-default" ng-click="editUser()">Update User</button>
+    <button type="button" class="btn btn-default" ng-click="backToUsers()">Cancel</button>
 
   </div>
 

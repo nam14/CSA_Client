@@ -8,14 +8,14 @@
 /*jshint sub:true*/
 
 angular.module('csaClientAngularjsApp')
-  .controller('LoginCtrl', ['$scope', '$http', '$rootScope', '$location', 'Base64', 'AuthenticationService',
-    function ($scope, $http, $rootScope, $location, Base64) {
+  .controller('LoginCtrl', ['$scope', '$http', '$rootScope', '$location', 'AuthenticationService',
+    function ($scope, $http, $rootScope, $location, AuthenticationService) {
 
       //login
       $scope.login = function() {
-        var loginData = Base64.encode($scope.loginUsername + ':' + $scope.loginPassword);
-        $http.defaults.headers.common['Authorization'] = 'Basic ' + loginData;
-       // AuthenticationService.clearCredentials();
+        //var loginData = Base64.encode($scope.loginUsername + ':' + $scope.loginPassword);
+        //$http.defaults.headers.common['Authorization'] = 'Basic ' + loginData;
+        AuthenticationService.clearCredentials();
         $http.post('http://localhost:3000/session', {login:$scope.loginUsername, password:$scope.loginPassword}).
           success(function(data) {
             loggedIn(data);
@@ -37,21 +37,15 @@ angular.module('csaClientAngularjsApp')
         $http.delete('http://localhost:3000/session')
           .success(function() {
             console.log('session deleted');
-            $rootScope.resetCurrentUsername();
-            $rootScope.loggedInToBeFalsey();
+            AuthenticationService.clearCredentials();
             $location.path('/#');
-
-
           }).error(function() {
 
           });
-
       };
 
-      function loggedIn(data) {
-        $scope.loggedInToBeTruthy();
-        $scope.setCurrentUsername(data.login);
-        //AuthenticationService.setCredentials($scope.loginUsername, $scope.loginPassword);
+      function loggedIn() {
+        AuthenticationService.setCredentials($scope.loginUsername, $scope.loginPassword);
         $location.path('/#');
       }
     }]);

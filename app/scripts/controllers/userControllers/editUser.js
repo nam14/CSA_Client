@@ -5,11 +5,21 @@
 
 
 angular.module('csaClientAngularjsApp')
-  .controller('EditUserCtrl', ['$scope', 'UserService', '$location', '$http',
-    function ($scope, UserService, $location, $http) {
+  .controller('EditUserCtrl', ['$scope', 'UserService', '$location', '$http', '$routeParams',
+    function ($scope, UserService, $location, $http, $routeParams) {
 
       $scope.init = function () {
-        $scope.user = UserService.getSelectedUser();
+        $scope.getSelectedUser();
+      };
+
+      $scope.getSelectedUser = function () {
+        $http.get('http://localhost:3000/users/' + $routeParams.userId + '.json').
+          success(function(data){
+            $scope.user = data;
+          }).
+          error(function(){
+
+          });
       };
 
       $scope.updateUser = function() {
@@ -20,7 +30,10 @@ angular.module('csaClientAngularjsApp')
           }).error(function(){
 
           });
+      };
 
+      $scope.backToUsers = function () {
+        $location.path('/users');
       };
 
 

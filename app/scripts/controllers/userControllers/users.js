@@ -14,7 +14,6 @@ angular.module('csaClientAngularjsApp')
       };
 
       $scope.loadUsers = function() {
-
         $http.get('http://localhost:3000/users.json').
            success(function(data) {
             $scope.users=data;
@@ -31,18 +30,30 @@ angular.module('csaClientAngularjsApp')
 
         UserService.setSelectedUser(user);
         $routeParams.userId = UserService.getSelectedUser().id;
-        console.log(UserService.getSelectedUser());
-        $location.path('users/'+ $routeParams.userId);
+        $location.path('/users/'+ $routeParams.userId);
 
       };
 
-      $scope.createUser = function() {
-        $location.path('users/new')
+      $scope.newUser = function() {
+        $location.path('/users/new');
       };
 
-      $scope.submitNewUser = function() {
-
+      $scope.editSelectedUser = function(user) {
+        UserService.setSelectedUser(user);
+        $routeParams.userId = UserService.getSelectedUser().id;
+        $location.path('/users/'+ $routeParams.userId + '/edit');
       };
+
+      $scope.deleteSelectedUser = function(user) {
+        $http.delete('http://localhost:3000/users/' + user.id + '.json').
+          success(function(){
+            $scope.loadUsers();
+          }).
+          error(function(){
+
+          });
+      };
+
 
 
     }]);

@@ -19,18 +19,16 @@ angular.module('csaClientAngularjsApp')
     var service={};
 
     service.setSelectedUser = function (user) {
-        $rootScope.selectedUser = user;
+      $rootScope.selectedUser = user;
     };
 
     service.clearSelectedUser = function () {
-        $rootScope.selectedUser = null;
+      $rootScope.selectedUser = null;
     };
 
     service.getSelectedUser = function () {
         return $rootScope.selectedUser;
     };
-    service.selectedUser = $rootScope.selectedUser;
-
 
     return service;
 

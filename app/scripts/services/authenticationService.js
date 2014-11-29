@@ -6,11 +6,13 @@
 'use strict';
 
 angular.module('csaClientAngularjsApp')
-  .service('AuthenticationService',
+  .factory('AuthenticationService',
   ['Base64', '$http', '$cookieStore', '$rootScope',
     function (Base64, $http, $cookieStore, $rootScope) {
 
-          this.setCredentials = function (username, password) {
+      var service = {};
+
+          service.setCredentials = function (username, password) {
             var authData = Base64.encode(username + ':' + password);
 
             $rootScope.globals = {
@@ -22,12 +24,18 @@ angular.module('csaClientAngularjsApp')
 
             $http.defaults.headers.common['Authorization'] = 'Basic ' + authData; // jshint ignore:line
             $cookieStore.put('globals', $rootScope.globals);
+            $rootScope.loggedInToBeTruthy();
+            $rootScope.setCurrentUsername($rootScope.globals.currentUser.username);
           };
 
-          this.clearCredentials = function () {
+          service.clearCredentials = function () {
             $rootScope.globals = {};
             $cookieStore.remove('globals');
+            $rootScope.resetCurrentUsername();
+            $rootScope.loggedInToBeFalsey();
             $http.defaults.headers.common.Authorization = 'Basic ';
           };
+
+      return service;
 
     }]);
