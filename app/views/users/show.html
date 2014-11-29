@@ -4,17 +4,25 @@
 
     <h2>User Profile</h2>
 
-    <h3>{{user.firstname}} {{user.surname}}</h3>
+    <table class="table">
+      <th>First Name</th>
+      <th>Surname</th>
+      <th>Grad Year</th>
+      <th>Phone</th>
+      <th>Jobs</th>
+      <th>Email</th>
+      <tr>
+        <td>{{user.firstname}}</td>
+        <td>{{user.surname}}</td>
+        <td>{{user.grad_year}}</td>
+        <td>{{user.phone}}</td>
+        <td>{{user.jobs}}</td>
+        <td>{{user.email}}</td>
 
-    <h5>Phone Number:</h5>
-    <p>{{user.phone}}</p>
-    <h5>Email:</h5>
-    <p>{{user.email}}</p>
-    <h5>Grad Year:</h5>
-    <p>{{user.grad_year}}</p>
-    <h5>Jobs:</h5>
-    <p>{{user.jobs}}</p>
-
+      </tr>
+    </table>
+    <button ng-click="editSelectedUser(user)" class="btn btn-info">Edit</button>
+    <button ng-click="deleteSelectedUser(user)" class="btn btn-danger">Delete</button>
     <button type="button" class="btn btn-default" ng-click="backToUsers()">Cancel</button>
 
   </div>

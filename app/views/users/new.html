@@ -21,7 +21,7 @@
       </div>
       <div class="form-group">
         <label for="newPhone">Phone</label>
-        <input type="tel" ng-model="user.phone" name="phone" id="newPhone"
+        <input type="text" ng-model="user.phone" name="phone" id="newPhone"
                class="form-control" required>
         <span ng-show="form.phone.$dirty && form.phone.$error.required"
               class="help-block">Phone is required</span>
@@ -32,7 +32,7 @@
                class="form-control" required>
         <span ng-show="form.email.$dirty && form.email.$error.required"
               class="help-block">Email is required</span>
-        <span ng-show="form.email.$error.email">Invalid email address.</span>
+        <span ng-show="form.email.$error.email" class="help-block">Invalid email address.</span>
       </div>
       <div class="form-group">
         <label for="newGradYear">Grad Year</label>
@@ -61,15 +61,15 @@
               class="help-block">Password is required</span>
       </div>
       <div class="form-group">
-        <label for="newPasswordConfirm">Password</label>
+        <label for="newPasswordConfirm">Confirm Password</label>
         <input type="password" ng-model="user.user_detail_attributes.password_confirmation" name="passwordConfirm"
                id="newPasswordConfirm" class="form-control">
-        <span ng-show="form.passwordConfirm.$dirty && form.passwordConfirm.$error.required &&
-            form.password == form.passwordConfirm"
+        <span ng-show="form.passwordConfirm.$dirty && form.passwordConfirm.$error.required"
               class="help-block">Password is required</span>
       </div>
       <div class="form-actions">
         <button type="submit" ng-disabled="form.$invalid" class="btn btn danger" >Create User</button>
+        <button type="button" ng-click="backToUsers()" class="btn btn-default">Cancel</button>
       </div>
 
     </form>

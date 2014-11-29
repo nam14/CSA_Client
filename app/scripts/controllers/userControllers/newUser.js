@@ -25,4 +25,8 @@ angular.module('csaClientAngularjsApp')
           });
       };
 
+      $scope.backToUsers = function () {
+        $location.path('/users');
+      };
+
     }]);

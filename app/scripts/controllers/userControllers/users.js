@@ -5,8 +5,8 @@
 
 
 angular.module('csaClientAngularjsApp')
-  .controller('UsersCtrl', ['$scope', '$http', '$location', '$routeParams', 'UserService',
-    function ($scope, $http, $location, $routeParams, UserService) {
+  .controller('UsersCtrl', ['$scope', '$http', '$location', '$routeParams',
+    function ($scope, $http, $location, $routeParams) {
       var previousSelection;
 
       $scope.initUsers = function() {
@@ -27,9 +27,7 @@ angular.module('csaClientAngularjsApp')
           previousSelection.$selected = false;
         }
         previousSelection = user;
-
-        UserService.setSelectedUser(user);
-        $routeParams.userId = UserService.getSelectedUser().id;
+        $routeParams.userId = user.id;
         $location.path('/users/'+ $routeParams.userId);
 
       };
@@ -38,21 +36,7 @@ angular.module('csaClientAngularjsApp')
         $location.path('/users/new');
       };
 
-      $scope.editSelectedUser = function(user) {
-        UserService.setSelectedUser(user);
-        $routeParams.userId = UserService.getSelectedUser().id;
-        $location.path('/users/'+ $routeParams.userId + '/edit');
-      };
 
-      $scope.deleteSelectedUser = function(user) {
-        $http.delete('http://localhost:3000/users/' + user.id + '.json').
-          success(function(){
-            $scope.loadUsers();
-          }).
-          error(function(){
-
-          });
-      };
 
 
 
