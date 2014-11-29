@@ -13,34 +13,23 @@ angular.module('csaClientAngularjsApp')
 
       //login
       $scope.login = function() {
-        //var loginData = Base64.encode($scope.loginUsername + ':' + $scope.loginPassword);
-        //$http.defaults.headers.common['Authorization'] = 'Basic ' + loginData;
         AuthenticationService.clearCredentials();
         $http.post('http://localhost:3000/session', {login:$scope.loginUsername, password:$scope.loginPassword}).
           success(function(data) {
             loggedIn(data);
           }).
-          error(function() {
-
+          error(function(data) {
+            Notifier.error(data.error); /*jshint ignore:line*/
           });
-      };
-
-      //register a new user
-      $scope.register = function() {
-        if($scope.password1.val() === $scope.password2.val()) {
-        } else {
-        }
       };
 
       //logout - rootScope as needs to be accessible in index.html
       $rootScope.logout = function() {
         $http.delete('http://localhost:3000/session')
           .success(function() {
-            console.log('session deleted');
             AuthenticationService.clearCredentials();
             $location.path('/#');
           }).error(function() {
-
           });
       };
 

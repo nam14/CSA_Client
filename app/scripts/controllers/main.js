@@ -11,6 +11,4 @@ angular.module('csaClientAngularjsApp')
   .controller('MainCtrl', function () {
 
 
-
-
   });

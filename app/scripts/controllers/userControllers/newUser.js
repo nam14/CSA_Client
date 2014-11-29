@@ -17,16 +17,18 @@ angular.module('csaClientAngularjsApp')
       $scope.createNewUser = function() {
         $http.post('http://localhost:3000/users', {user:$scope.user}).
           success(function(){
-            console.log('new user created');
             $location.path('/users');
           }).
-          error(function() {
-
+          error(function(data) {
+            //just showing data does not work, need to work out how
+            //to traverse unknown attributes
+            Notifier.error(data); /*jshint ignore:line*/
           });
       };
 
       $scope.backToUsers = function () {
         $location.path('/users');
       };
+
 
     }]);

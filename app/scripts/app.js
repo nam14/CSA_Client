@@ -12,12 +12,8 @@
  */
 angular
   .module('csaClientAngularjsApp', [
-   // 'ngAnimate',
     'ngCookies',
-  //  'ngResource',
     'ngRoute'
-  //  'ngSanitize',
-  //  'ngTouch',
   ])
   .config(function ($routeProvider) {
 

@@ -18,7 +18,8 @@ angular.module('csaClientAngularjsApp')
            success(function(data) {
             $scope.users=data;
            }).
-           error(function(data) {
+           error(function(status) {
+              Notifier.error(status); /*jshint ignore:line*/
            });
         };
 

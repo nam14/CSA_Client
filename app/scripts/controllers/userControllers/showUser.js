@@ -20,6 +20,7 @@ angular.module('csaClientAngularjsApp')
             UserService.setSelectedUser($scope.user);
           }).
           error(function(data) {
+            Notifier.error(data.error); /*jshint ignore:line*/
           });
 
       };
@@ -39,8 +40,8 @@ angular.module('csaClientAngularjsApp')
             UserService.clearSelectedUser();
             $scope.backToUsers();
           }).
-          error(function(){
-
+          error(function(data){
+            Notifier.error(data.error); /*jshint ignore:line*/
           });
       };
     }]);
