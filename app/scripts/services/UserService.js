@@ -12,7 +12,6 @@
  * Created by nataliamiller on 22/11/2014.
  */
 
-
 angular.module('csaClientAngularjsApp')
   .factory('UserService', ['$rootScope', function ($rootScope) {
 
