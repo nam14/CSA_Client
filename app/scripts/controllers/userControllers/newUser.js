@@ -15,7 +15,7 @@ angular.module('csaClientAngularjsApp')
       };
 
       $scope.createNewUser = function() {
-        $http.post('http://localhost:3000/users', {user:$scope.user}).
+        $scope.saveNewUserPromise = $http.post('http://localhost:3000/users', {user:$scope.user}).
           success(function(){
             $location.path('/users');
           }).

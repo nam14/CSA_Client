@@ -1,29 +1,31 @@
 <div ng-controller="UsersCtrl" ng-init="initUsers()">
+  <div cg-busy="{promise:usersPromise,message:'Loading Users...'}">
+    <div class="container">
 
-<div class="container">
-  <h2>Users</h2>
+      <h2>Users</h2>
 
-  <p>Filter by Firstname: <input type="text" ng-model="nameFilter">
-    <button type="button" class="btn btn-primary" ng-click="newUser()">New User</button></p>
-    <table class = "table table-hover">
-      <th>Firstname</th>
-      <th>Surname</th>
-      <th>Grad Year</th>
-      <th>Phone</th>
-      <th>Jobs</th>
-      <th>Email</th>
-      <tr ng-repeat="user in users| filter:nameFilter" ng-click="user.$selected = !user.$selected;"
-          ng-class="{'active': user.$selected}">
-        <td>{{ user.firstname }}</td>
-        <td>{{ user.surname }}</td>
-        <td>{{ user.grad_year}}</td>
-        <td>{{ user.phone }}</td>
-        <td>{{ user.jobs }}</td>
-        <td>{{ user.email }}</td>
-        <td><button ng-click="openSelectedUser(user)" class="btn btn-success">View</button>
+      <p>Filter by Firstname: <input type="text" ng-model="nameFilter">
+        <button type="button" class="btn btn-primary" ng-click="newUser()">New User</button></p>
+      <table class = "table table-hover">
+        <th>Firstname</th>
+        <th>Surname</th>
+        <th>Grad Year</th>
+        <th>Phone</th>
+        <th>Jobs</th>
+        <th>Email</th>
+        <tr ng-repeat="user in users| filter:nameFilter" ng-click="user.$selected = !user.$selected;"
+            ng-class="{'active': user.$selected}">
+          <td>{{ user.firstname }}</td>
+          <td>{{ user.surname }}</td>
+          <td>{{ user.grad_year}}</td>
+          <td>{{ user.phone }}</td>
+          <td>{{ user.jobs }}</td>
+          <td>{{ user.email }}</td>
+          <td><button ng-click="openSelectedUser(user)" class="btn btn-success">View</button>
           </td>
-      </tr>
-    </table>
+        </tr>
+      </table>
+    </div>
+  </div>
 </div>
 
-</div>

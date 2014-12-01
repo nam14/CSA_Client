@@ -14,7 +14,7 @@ angular.module('csaClientAngularjsApp')
       };
 
       $scope.getUserInfo = function() {
-        $http.get('http://localhost:3000/users/'+$routeParams.userId+'.json').
+        $scope.getUserInfoPromise = $http.get('http://localhost:3000/users/'+$routeParams.userId+'.json').
           success(function(data) {
             $scope.user = data;
             UserService.setSelectedUser($scope.user);
@@ -38,6 +38,7 @@ angular.module('csaClientAngularjsApp')
         $http.delete('http://localhost:3000/users/' + UserService.getSelectedUser().id + '.json').
           success(function(){
             UserService.clearSelectedUser();
+            Notifier.success('User deleted'); /*jshint ignore:line*/
             $scope.backToUsers();
           }).
           error(function(data){

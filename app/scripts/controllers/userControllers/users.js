@@ -14,14 +14,19 @@ angular.module('csaClientAngularjsApp')
       };
 
       $scope.loadUsers = function() {
-        $http.get('http://localhost:3000/users.json').
-           success(function(data) {
+        $scope.usersPromise = $http.get('http://localhost:3000/users.json').
+          success(function(data) {
             $scope.users=data;
-           }).
-           error(function(status) {
+          }).
+          error(function(data, status) {
+            if(data) {
+              Notifier.error(data.error); /*jshint ignore:line*/
+            } else{
               Notifier.error(status); /*jshint ignore:line*/
-           });
-        };
+            }
+
+          });
+      };
 
       $scope.openSelectedUser = function(user){
         if(previousSelection) {

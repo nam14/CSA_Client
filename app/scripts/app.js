@@ -13,7 +13,8 @@
 angular
   .module('csaClientAngularjsApp', [
     'ngCookies',
-    'ngRoute'
+    'ngRoute',
+    'cgBusy'
   ])
   .config(function ($routeProvider) {
 

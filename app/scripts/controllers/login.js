@@ -14,7 +14,7 @@ angular.module('csaClientAngularjsApp')
       //login
       $scope.login = function() {
         AuthenticationService.clearCredentials();
-        $http.post('http://localhost:3000/session', {login:$scope.loginUsername, password:$scope.loginPassword}).
+        $scope.loginPromise = $http.post('http://localhost:3000/session', {login:$scope.loginUsername, password:$scope.loginPassword}).
           success(function(data) {
             loggedIn(data);
           }).

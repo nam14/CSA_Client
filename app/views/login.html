@@ -1,7 +1,7 @@
 <div ng-controller="LoginCtrl">
-
+  <div cg-busy="{promise:loginPromise,message:'Logging in...'}">
   <div class="container">
-    <flash-messages></flash-messages>
+    </div>
     <h2>Login</h2>
     <form role="form" ng-submit="login()">
       <div class="form-group">
@@ -22,5 +22,6 @@
         <button type="submit" ng-disabled="form.$invalid" class="btn btn danger" >Login </button>
       </div>
     </form>
+  </div>
   </div>
 </div>
