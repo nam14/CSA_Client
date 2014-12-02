@@ -7,20 +7,30 @@
 describe('Controller: LoginCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('csaClientAngularjsApp'));
+  beforeEach(module('csaClientAngularjsApp', ['ngCookies', 'ngRoute', 'cgBusy', 'ngMock']));
 
-  var LoginCtrl,
-    scope;
+  var LoginCtrl, scope, httpBackend, createController;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope, $httpBackend) {
+    httpBackend = $httpBackend;
     scope = $rootScope.$new();
-    LoginCtrl = $controller('LoginCtrl', {
-      $scope: scope
-    });
+
+    createController= function() {
+      return $controller('LoginCtrl', {
+        $scope: scope,
+        $http: $httpBackend
+      });
+    };
+
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+
+
+  it('should post a session request with log in info', function () {
+      httpBackend.expectPOST('http://localhost:3000/session', {login:'admin', password:'password'}).respond(200);
+      createController();
+    //POST('http://localhost:3000/session', {login:'admin', password:'password'})
+      httpBackend.flush();
   });
 });

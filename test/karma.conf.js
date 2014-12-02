@@ -18,6 +18,9 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+
+      'bower_components/jquery/dist/jquery.js',
+      'bower_components/bootstrap/dist/js/bootstrap.js',
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
       'bower_components/angular-animate/angular-animate.js',
@@ -26,9 +29,17 @@ module.exports = function(config) {
       'bower_components/angular-route/angular-route.js',
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-touch/angular-touch.js',
-      'app/scripts/**/*.js',
-      'test/mock/**/*.js',
-      'test/spec/**/*.js'
+      'bower_components/angular-mocks/angular-mocks.js',
+      'bower_components/angular-busy/dist/angular-busy.js',
+      'bower_components/json3/lib/json3.js',
+      'bower_components/ng-table/ng-table.js',
+      'bower_components/angular-base64/angular-base64.js',
+      'bower_components/angular-busy/dist/angular-busy.js',
+      'app/scripts/app.js',
+      'app/scripts/controllers/userControllers/*.js',
+      'app/scripts/controllers/*.js',
+      'app/scripts/services/*.js',
+      'test/spec/controllers/*.js'
     ],
 
     // list of files / patterns to exclude
@@ -46,12 +57,12 @@ module.exports = function(config) {
     // - PhantomJS
     // - IE (only Windows)
     browsers: [
-      'PhantomJS'
+      'Firefox'
     ],
 
     // Which plugins to enable
     plugins: [
-      'karma-phantomjs-launcher',
+      'karma-firefox-launcher',
       'karma-jasmine'
     ],
 
