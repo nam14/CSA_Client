@@ -13,6 +13,7 @@ angular.module('csaClientAngularjsApp')
 
       //login
       $scope.login = function() {
+        //ensure that credentials are empty
         AuthenticationService.clearCredentials();
         $scope.loginPromise = $http.post('http://localhost:3000/session', {login:$scope.loginUsername, password:$scope.loginPassword}).
           success(function(data) {
@@ -35,6 +36,6 @@ angular.module('csaClientAngularjsApp')
 
       function loggedIn() {
         AuthenticationService.setCredentials($scope.loginUsername, $scope.loginPassword);
-        $location.path('/#');
+        $location.path('/#'); //once logged in go to home
       }
     }]);

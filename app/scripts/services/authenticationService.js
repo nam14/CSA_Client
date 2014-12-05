@@ -14,18 +14,18 @@ angular.module('csaClientAngularjsApp')
 
           service.setCredentials = function (username, password) {
             var authData = Base64.encode(username + ':' + password);
-
+            //keep logged in user info in scope
             $rootScope.globals = {
               currentUser: {
                 username: username,
                 authdata: authData
               }
             };
-
+            //set authorization header for every request
             $http.defaults.headers.common['Authorization'] = 'Basic ' + authData; // jshint ignore:line
             $cookieStore.put('globals', $rootScope.globals);
-            $rootScope.loggedInToBeTruthy();
-            $rootScope.setCurrentUsername($rootScope.globals.currentUser.username);
+            $rootScope.loggedInToBeTruthy(); //show the relevant menu buttons
+            $rootScope.setCurrentUsername($rootScope.globals.currentUser.username); //for the welcome page
           };
 
           service.clearCredentials = function () {
