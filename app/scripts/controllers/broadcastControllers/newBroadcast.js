@@ -14,10 +14,11 @@ angular.module('csaClientAngularjsApp')
       $scope.init = function() {
         $scope.broadcast = {};
         $scope.feeds = {};
+        $scope.forms = {};
       };
 
       $scope.submitBroadcast = function() {
-        $scope.newBroadcastPromise = $http.post('http://locahost:3000/broadcasts.json',
+        $scope.newBroadcastPromise = $http.post('http://localhost:3000/broadcasts.json',
           {broadcast: $scope.broadcast, feeds: $scope.feeds}).
           success(function(){
             $location.path('/broadcasts');
@@ -30,5 +31,6 @@ angular.module('csaClientAngularjsApp')
       $scope.backToBroadcasts = function() {
         $location.path('/broadcasts');
       };
+
     }]);
 

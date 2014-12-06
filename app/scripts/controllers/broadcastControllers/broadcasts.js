@@ -8,8 +8,8 @@
 /*jshint sub:true*/
 
 angular.module('csaClientAngularjsApp')
-  .controller('BroadcastsCtrl', ['$scope', '$http', '$location',
-    function ($scope, $http, $location) {
+  .controller('BroadcastsCtrl', ['$scope', '$http', '$location', '$routeParams',
+    function ($scope, $http, $location, $routeParams) {
 
       $scope.init = function() {
           $scope.getBroadcasts();
@@ -27,7 +27,8 @@ angular.module('csaClientAngularjsApp')
       };
 
       $scope.openSelectedBroadcast = function(broadcast) {
-
+        $routeParams.broadcastId = broadcast.id;
+        $location.path('/broadcasts/' + $routeParams.broadcastId);
       };
 
       $scope.newBroadcast = function() {

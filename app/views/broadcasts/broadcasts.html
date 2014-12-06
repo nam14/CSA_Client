@@ -7,7 +7,6 @@
       <button type="button" class="btn btn-primary" ng-click="newBroadcast()">New Broadcast</button></p>
       <table class = "table table-hover">
         <th>Date Sent</th>
-        <th>Feeds</th>
         <tr ng-repeat="broadcast in broadcasts track by $index">
           <td>{{broadcast.created_at}}</td>
           <td><button ng-click="openSelectedBroadcast(broadcast)" class="btn btn-success">View</button>

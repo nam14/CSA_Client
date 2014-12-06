@@ -50,6 +50,10 @@ angular
       .when('/broadcasts/new', {
         templateUrl: 'views/broadcasts/new.html',
         controller: 'NewBroadcastCtrl'
+      }).
+      when('/broadcasts/:broadcastId', {
+        templateUrl: 'views/broadcasts/show.html',
+        controller: 'ShowBroadcastCtrl'
       })
       .otherwise({
         redirectTo: '/#'

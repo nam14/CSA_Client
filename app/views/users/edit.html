@@ -6,43 +6,47 @@
 
         <h2>Edit Profile</h2>
 
-        <form role="form" ng-submit="updateUser()">
+        <form role="form" ng-submit="updateUser()" name="form">
 
           <div class="form-group">
             <label for="editFirstname">First Name</label>
             <input type="text" ng-model="user.firstname" name="firstname" id="editFirstname"
                    class="form-control" required>
-        <span ng-show="form.firstname.$dirty && form.firstname.$error.required"
+        <span style="color:red" ng-show="form.firstname.$dirty && form.firstname.$error.required"
               class="help-block">First Name is required</span>
           </div>
           <div class="form-group">
             <label for="editSurname">Surname</label>
             <input type="text" ng-model="user.surname" name="surname" id="editSurname"
                    class="form-control" required>
-        <span ng-show="form.surname.$dirty && form.surname.$error.required"
+        <span style="color:red" ng-show="form.surname.$dirty && form.surname.$error.required"
               class="help-block">Surname is required</span>
           </div>
           <div class="form-group">
             <label for="editPhone">Phone</label>
             <input type="text" ng-model="user.phone" name="phone" id="editPhone"
                    class="form-control" required>
-        <span ng-show="form.phone.$dirty && form.phone.$error.required"
+        <span style="color:red" ng-show="form.phone.$dirty && form.phone.$error.required"
               class="help-block">Phone is required</span>
           </div>
           <div class="form-group">
             <label for="editEmail">Email</label>
             <input type="text" ng-model="user.email" name="email" id="editEmail"
                    class="form-control"  required>
-        <span ng-show="form.email.$dirty && form.email.$error.required"
+        <span style="color:red" ng-show="form.email.$dirty && form.email.$error.required"
               class="help-block">Email is required</span>
             <span ng-show="form.email.$error.email" class="help-block">Invalid email address.</span>
           </div>
           <div class="form-group">
             <label for="editGradYear">Grad Year</label>
-            <input type="text" ng-model="user.grad_year" name="grad_year" id="editGradYear"
-                   class="form-control" required>
-        <span ng-show="form.grad_year.$dirty && form.grad_year.$error.required"
+            <input type="number" ng-model="user.grad_year" name="grad_year" id="editGradYear"
+                   class="form-control" min="1970" max="{{currentYear}}" required>
+        <span style="color:red" ng-show="form.grad_year.$dirty && form.grad_year.$error.required"
               class="help-block">Graduation Year is required</span>
+            <span style="color:red" ng-show="form.grad_year.$error && form.grad_year.$error.min"
+                  class="help-block">Graduation Year cannot be less than 1970</span>
+          <span style="color:red" ng-show="form.grad_year.$error && form.grad_year.$error.max"
+                class="help-block">Graduation Year cannot be greater than {{currentYear}}</span>
           </div>
           <div class="form-group">
             <label for="editJobs">Jobs</label>

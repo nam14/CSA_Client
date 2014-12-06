@@ -12,6 +12,7 @@ angular.module('csaClientAngularjsApp')
 
       $scope.init = function () {
         $scope.user = {};
+        $scope.currentYear = new Date().getFullYear();
       };
 
       $scope.createNewUser = function() {

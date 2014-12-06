@@ -1,0 +1,22 @@
+
+<div ng-controller="ShowBroadcastCtrl" ng-init="init()">
+  <div cg-busy="{promise:broadcastPromise,message:'Loading Broadcast...'}">
+    <div class="container">
+
+
+      <h2>Broadcast</h2>
+
+      <table class="table">
+        <th>Content</th>
+        <th>Date Sent</th>
+        <tr>
+          <td>{{broadcast.content}}</td>
+          <td>{{broadcast.created_at}}</td>
+        </tr>
+      </table>
+      <button ng-click="deleteBroadcast(broadcast)" class="btn btn-danger">Delete</button>
+      <button ng-click="backToBroadcasts()" class="btn btn-default">Cancel</button>
+
+    </div>
+  </div>
+</div>

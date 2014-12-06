@@ -10,6 +10,7 @@ angular.module('csaClientAngularjsApp')
 
         $scope.init = function () {
         $scope.getSelectedUser();
+          $scope.currentYear = new Date().getFullYear();
       };
 
       $scope.getSelectedUser = function () {
