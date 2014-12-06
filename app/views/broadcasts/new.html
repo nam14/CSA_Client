@@ -1,0 +1,27 @@
+<div ng-controller="NewBroadcastCtrl" ng-init="init()">
+  <div cg-busy="{promise:newBroadcastPromise,message:'Saving Broadcast...'}">
+    <div class="container">
+
+      <h2>New Broadcast</h2>
+
+      <form role="form" ng-submit="submitBroadcast()" name="form">
+
+        <div class="form-group">
+          <label for="newContent">Broadcast text</label>
+          <textarea ng-model="brodcast.content" id="newContent" name="newContent"></textarea>
+        <span ng-show="form.newContent.$dirty && form.newContent.$error.required"
+              class="help-block">Broadcast Text is required</span>
+        </div>
+        <div class="form-group">
+          <label for="twitterFeed">Select to choose Twitter</label>
+          <input type="checkbox" ng-model="feeds.twitter" id="twitterFeed" name="twitterFeed">
+        </div>
+        <div class="form-group">
+          <button type="submit" ng-disabled="form.$invalid" class="btn btn danger" >Broadcast</button>
+          <button type="button" ng-click="backToBroadcasts()" class="btn btn-default">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

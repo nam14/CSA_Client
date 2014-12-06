@@ -31,7 +31,8 @@
 
           <li><a ng-href="#">Home</a></li>
           <li ng-show="loggedIn"><a ng-href="#/users">Users</a></li>
-          <li ng-show="!loggedIn"><a ng-href="#/login">Login/Register</a></li>
+          <li ng-show="loggedIn"><a ng-href="#/broadcasts">Broadcasts</a></li>
+          <li ng-show="!loggedIn"><a ng-href="#/login">Login</a></li>
           <li ng-show="loggedIn"><a ng-click="logout()">Logout</a> </li>
         </ul>
 
@@ -92,6 +93,8 @@
         <script src="scripts/controllers/userControllers/editUser.js"></script>
         <script src="scripts/controllers/userControllers/newUser.js"></script>
         <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/broadcastControllers/broadcasts.js"></script>
+        <script src="scripts/controllers/broadcastControllers/newBroadcast.js"></script>
 
         <!-- endbuild -->
 

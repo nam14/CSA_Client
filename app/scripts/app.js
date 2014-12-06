@@ -43,6 +43,14 @@ angular
         templateUrl: '../views/users/edit.html',
         controller: 'EditUserCtrl'
       })
+      .when('/broadcasts', {
+        templateUrl: 'views/broadcasts/broadcasts.html',
+        controller: 'BroadcastsCtrl'
+      })
+      .when('/broadcasts/new', {
+        templateUrl: 'views/broadcasts/new.html',
+        controller: 'NewBroadcastCtrl'
+      })
       .otherwise({
         redirectTo: '/#'
       });
