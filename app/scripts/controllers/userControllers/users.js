@@ -12,13 +12,14 @@ angular.module('csaClientAngularjsApp')
       $scope.initUsers = function() {
         $scope.loadUsers();
       };
-
+      //load users from server
       $scope.loadUsers = function() {
         $scope.usersPromise = $http.get('http://localhost:3000/users.json').
           success(function(data) {
             $scope.users=data;
           }).
           error(function(data, status) {
+            //display error in notification message
             if(data) {
               Notifier.error(data.error); /*jshint ignore:line*/
             } else{
@@ -27,7 +28,7 @@ angular.module('csaClientAngularjsApp')
 
           });
       };
-
+      //if view has been selected, change the location to the show page
       $scope.openSelectedUser = function(user){
         if(previousSelection) {
           previousSelection.$selected = false;
@@ -37,7 +38,7 @@ angular.module('csaClientAngularjsApp')
         $location.path('/users/'+ $routeParams.userId);
 
       };
-
+      //if new user has been selected, change the location to the new page
       $scope.newUser = function() {
         $location.path('/users/new');
       };

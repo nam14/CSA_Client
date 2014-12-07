@@ -7,8 +7,8 @@
 
 angular.module('csaClientAngularjsApp')
   .factory('AuthenticationService',
-  ['Base64', '$http', '$cookieStore', '$rootScope',
-    function (Base64, $http, $cookieStore, $rootScope) {
+  ['Base64', '$http', '$rootScope',
+    function (Base64, $http, $rootScope) {
 
       var service = {};
 
@@ -23,14 +23,12 @@ angular.module('csaClientAngularjsApp')
             };
             //set authorization header for every request
             $http.defaults.headers.common['Authorization'] = 'Basic ' + authData; // jshint ignore:line
-            $cookieStore.put('globals', $rootScope.globals);
             $rootScope.loggedInToBeTruthy(); //show the relevant menu buttons
             $rootScope.setCurrentUsername($rootScope.globals.currentUser.username); //for the welcome page
           };
-
+          //clear the crentials
           service.clearCredentials = function () {
             $rootScope.globals = {};
-            $cookieStore.remove('globals');
             $rootScope.resetCurrentUsername();
             $rootScope.loggedInToBeFalsey();
             $http.defaults.headers.common.Authorization = 'Basic ';

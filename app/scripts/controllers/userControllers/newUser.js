@@ -12,9 +12,9 @@ angular.module('csaClientAngularjsApp')
 
       $scope.init = function () {
         $scope.user = {};
-        $scope.currentYear = new Date().getFullYear();
+        $scope.currentYear = new Date().getFullYear(); //for form grad year validation
       };
-
+      //post new user to server
       $scope.createNewUser = function() {
         $scope.saveNewUserPromise = $http.post('http://localhost:3000/users', {user:$scope.user}).
           success(function(){
@@ -26,7 +26,7 @@ angular.module('csaClientAngularjsApp')
             Notifier.error(data); /*jshint ignore:line*/
           });
       };
-
+      //if cancel is selected go back to users page
       $scope.backToUsers = function () {
         $location.path('/users');
       };

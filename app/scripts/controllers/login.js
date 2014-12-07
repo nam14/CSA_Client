@@ -35,6 +35,7 @@ angular.module('csaClientAngularjsApp')
       };
 
       function loggedIn() {
+        //save the users in the authentication service
         AuthenticationService.setCredentials($scope.loginUsername, $scope.loginPassword);
         $location.path('/#'); //once logged in go to home
       }

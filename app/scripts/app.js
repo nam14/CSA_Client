@@ -17,6 +17,7 @@ angular
     'cgBusy'
   ])
   .config(function ($routeProvider) {
+    //routing of the application
 
     $routeProvider
       .when('/#', {
@@ -62,7 +63,7 @@ angular
     $rootScope.loggedIn = false;
     $rootScope.currentUsername = 'Guest';
 
-
+    //loggedin boolean controls which menu tabs are visible
     $rootScope.loggedInToBeTruthy = function (){
         $rootScope.loggedIn = true;
     };
@@ -74,11 +75,9 @@ angular
     $rootScope.resetCurrentUsername = function (){
       $rootScope.currentUsername = 'Guest';
     };
-
+    //currentUsername to be displayed on homepage
     $rootScope.setCurrentUsername = function (username) {
       $rootScope.currentUsername = username;
     };
-
-  //  $http.defaults.headers.common['Authorization'] = 'Basic ' + 'admin:password';
 
   });

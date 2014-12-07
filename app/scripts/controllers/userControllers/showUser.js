@@ -12,7 +12,7 @@ angular.module('csaClientAngularjsApp')
       $scope.init = function() {
         $scope.getUserInfo();
       };
-
+      //get selected users information. User id stored in routeParams
       $scope.getUserInfo = function() {
         $scope.getUserInfoPromise = $http.get('http://localhost:3000/users/'+$routeParams.userId+'.json').
           success(function(data) {
@@ -24,16 +24,16 @@ angular.module('csaClientAngularjsApp')
           });
 
       };
-
+      //if cancel is selected go back tp users page
       $scope.backToUsers = function() {
         $location.path('/users');
       };
-
+      //if edit button is selected change location to edit page
       $scope.editSelectedUser = function() {
         $routeParams.userId = UserService.getSelectedUser().id;
         $location.path('/users/'+ $routeParams.userId + '/edit');
       };
-
+      //delete selected user, send delete request
       $scope.deleteSelectedUser = function() {
         $http.delete('http://localhost:3000/users/' + UserService.getSelectedUser().id + '.json').
           success(function(){
